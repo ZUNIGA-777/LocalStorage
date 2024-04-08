@@ -3,7 +3,6 @@ window.onload = iniciar;
 function iniciar(){
     let boton = document.querySelector("#btn");
     boton.addEventListener("click", saveLocalStorage);
-    mostrarNotas()
 }
 
 function saveLocalStorage(){
@@ -16,7 +15,6 @@ function saveLocalStorage(){
     } else {
         localStorage.setItem("notas", input.value);
     }
-    mostrarNotas()
 }
 
 function mostrarNotas(){
