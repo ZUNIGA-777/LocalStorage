@@ -1,12 +1,25 @@
-const input = document.querySelector("#textoEntrada")
-const botonSaveLocalStorage = document.querySelector("#btn")
+window.onload = iniciar;
 
-botonSaveLocalStorage.addEventListener("click",()=>{
-    if(localStorage.getItem("nombres")){
-        var nombres = localStorage.getItem("nombres")
-        nombres += " " + input.value
-        localStorage.setItem("nombres", nombres)
+function iniciar(){
+    let boton = document.querySelector("#btn");
+    boton.addEventListener("click", saveLocalStorage);
+    mostrarNotas()
+}
+
+function saveLocalStorage(){
+    let input = document.querySelector("#textoEntrada");
+
+    if(localStorage.getItem("notas")){
+        let notas = localStorage.getItem("notas");
+        notas += " " + input.value;
+        localStorage.setItem("notas", notas);
     } else {
-        localStorage.setItem("nombres", input.value)
+        localStorage.setItem("notas", input.value);
     }
-})
+    mostrarNotas()
+}
+
+function mostrarNotas(){
+    let containerNotas = document.querySelector("#containerNotas");
+    containerNotas.innerHTML = localStorage.getItem("notas") || "";
+}
